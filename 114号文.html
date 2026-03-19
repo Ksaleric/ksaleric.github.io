@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完善发电侧容量电价机制政策解读与储能业务策略</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            position: relative;
+            page-break-after: always;
+            break-after: page;
+        }
+        
+        /* 封面样式 */
+        .cover-slide {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            text-align: center;
+        }
+        
+        .cover-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #a8a8ff;
+        }
+        
+        h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #fff 0%, #a8a8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 28px;
+            color: #b8b8d1;
+            margin-bottom: 60px;
+            font-weight: 300;
+            z-index: 1;
+        }
+        
+        .meta-info {
+            display: flex;
+            gap: 40px;
+            font-size: 16px;
+            color: #8888aa;
+            z-index: 1;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* 内容页通用样式 */
+        .content-slide {
+            background: #f8f9fa;
+            color: #2d3748;
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        .slide-header {
+            width: 100%;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #4c51bf;
+        }
+        
+        .slide-number {
+            font-size: 14px;
+            color: #4c51bf;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 42px;
+            color: #1a202c;
+            font-weight: 700;
+        }
+        
+        .content-body {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* 卡片样式 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+        
+        .info-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid #4c51bf;
+            transition: transform 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-icon {
+            width: 36px;
+            height: 36px;
+            background: #4c51bf;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .card-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        
+        .highlight {
+            color: #e53e3e;
+            font-weight: 600;
+        }
+        
+        .highlight-blue {
+            color: #3182ce;
+            font-weight: 600;
+        }
+        
+        /* 流程图样式 */
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .process-step {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .step-desc {
+            font-size: 16px;
+            color: #718096;
+            line-height: 1.6;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: #cbd5e0;
+        }
+        
+        /* 表格样式 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .data-table th {
+            background: #4c51bf;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 17px;
+            color: #4a5568;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table tr:hover {
+            background: #f7fafc;
+        }
+        
+        /* 公式框 */
+        .formula-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+        
+        .formula-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .formula {
+            font-size: 32px;
+            font-weight: 700;
+            font-family: "Courier New", monospace;
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        
+        /* 时间线 */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: #e2e8f0;
+        }
+        
+        .timeline-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            background: #4c51bf;
+            border-radius: 50%;
+            margin: 30px auto;
+            position: relative;
+            z-index: 2;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 4px #4c51bf;
+        }
+        
+        .timeline-period {
+            font-size: 18px;
+            font-weight: 700;
+            color: #4c51bf;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+        
+        /* 列表样式 */
+        .feature-list {
+            list-style: none;
+            width: 100%;
+        }
+        
+        .feature-list li {
+            padding: 20px 0;
+            padding-left: 50px;
+            position: relative;
+            font-size: 20px;
+            color: #4a5568;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 36px;
+            height: 36px;
+            background: #48bb78;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        /* 对比卡片 */
+        .compare-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+        }
+        
+        .compare-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .compare-card.old {
+            border-top: 5px solid #a0aec0;
+        }
+        
+        .compare-card.new {
+            border-top: 5px solid #48bb78;
+        }
+        
+        .compare-label {
+            font-size: 14px;
+            color: #a0aec0;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        
+        .compare-card.new .compare-label {
+            color: #48bb78;
+        }
+        
+        .compare-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        
+        /* 强调框 */
+        .alert-box {
+            background: #fff5f5;
+            border-left: 5px solid #e53e3e;
+            padding: 30px;
+            border-radius: 0 12px 12px 0;
+            margin: 30px 0;
+            width: 100%;
+        }
+        
+        .alert-box.warning {
+            background: #fffaf0;
+            border-left-color: #ed8936;
+        }
+        
+        .alert-box.success {
+            background: #f0fff4;
+            border-left-color: #48bb78;
+        }
+        
+        .alert-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #c53030;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .alert-box.warning .alert-title {
+            color: #c05621;
+        }
+        
+        .alert-box.success .alert-title {
+            color: #276749;
+        }
+        
+        .alert-content {
+            font-size: 18px;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+        
+        /* 结尾页 */
+        .end-slide {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            text-align: center;
+        }
+        
+        .end-slide h2 {
+            color: white;
+            font-size: 48px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-info {
+            font-size: 24px;
+            color: #a8a8ff;
+            margin-top: 60px;
+        }
+        
+        /* 打印优化 */
+        @media print {
+            .slide {
+                page-break-after: always;
+                height: 100vh;
+            }
+            
+            body {
+                background: white;
+            }
+            
+            .content-slide {
+                background: white;
+            }
+        }
+        
+        /* 导航提示 */
+        .nav-hint {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        
+        @media print {
+            .nav-hint {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 第1页：封面 -->
+    <div class="slide cover-slide">
+        <div class="badge">POLICY BRIEFING</div>
+        <h1>完善发电侧容量电价机制<br>政策解读与储能业务策略</h1>
+        <div class="subtitle">发改价格〔2026〕114号 | 新型储能首次纳入容量电价机制</div>
+        <div class="meta-info">
+            <div class="meta-item">📅 2026年1月27日发布</div>
+            <div class="meta-item">⚡ 国家发改委 国家能源局</div>
+            <div class="meta-item">🔋 储能业务战略指南</div>
+        </div>
+    </div>
+
+    <!-- 第2页：政策背景 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">01 / 政策背景</div>
+            <h2>为什么出台这个政策？</h2>
+        </div>
+        <div class="content-body">
+            <div class="card-grid">
+                <div class="info-card">
+                    <div class="card-title">
+                        <div class="card-icon">🎯</div>
+                        核心目标
+                    </div>
+                    <div class="card-content">
+                        推进能源领域价格改革，加快建设<span class="highlight">新型能源体系</span>，引导调节性电源平稳有序建设
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-title">
+                        <div class="card-icon">⚡</div>
+                        系统需求
+                    </div>
+                    <div class="card-content">
+                        保障<span class="highlight-blue">电力系统安全稳定运行</span>，适应新型电力系统和电力市场体系建设需要
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-title">
+                        <div class="card-icon">🌱</div>
+                        转型要求
+                    </div>
+                    <div class="card-content">
+                        统筹电力安全稳定供应、能源<span class="highlight-blue">绿色低碳转型</span>和资源经济高效配置
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-title">
+                        <div class="card-icon">💡</div>
+                        机制创新
+                    </div>
+                    <div class="card-content">
+                        电力现货市场连续运行后，建立<span class="highlight">发电侧可靠容量补偿机制</span>，公平反映机组顶峰贡献
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第3页：核心框架 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">02 / 核心框架</div>
+            <h2>四大电源类型容量电价机制总览</h2>
+        </div>
+        <div class="content-body">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%">电源类型</th>
+                        <th style="width: 35%">核心机制</th>
+                        <th style="width: 45%">关键变化</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🔥 煤电</strong></td>
+                        <td>容量电价回收固定成本比例提升至<span class="highlight">≥50%</span></td>
+                        <td>可结合当地市场建设、利用小时数等进一步提高比例</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🔵 天然气发电</strong></td>
+                        <td>省级可建立容量电价机制</td>
+                        <td>按回收一定比例固定成本的方式确定</td>
+                    </tr>
+                    <tr style="background: #f0fff4;">
+                        <td><strong>💧 抽水蓄能</strong></td>
+                        <td>区分633号文出台前后项目</td>
+                        <td>前者政府定价，后者逐步市场化（3-5年核定），需参与市场</td>
+                    </tr>
+                    <tr style="background: #e6fffa;">
+                        <td><strong>🔋 新型储能</strong></td>
+                        <td><span class="highlight">首次建立容量电价机制</span></td>
+                        <td>按顶峰能力折算，最高不超过煤电容量电价标准</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert-box success">
+                <div class="alert-title">🎯 战略要点</div>
+                <div class="alert-content">
+                    <strong>新型储能首次获得"身份认证"</strong>：电网侧独立新型储能正式纳入容量电价体系，标志着储能从"辅助设施"向"独立市场主体"转型
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第4页：新型储能突破 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">03 / 新型储能机制</div>
+            <h2>电网侧独立新型储能容量电价详解</h2>
+        </div>
+        <div class="content-body">
+            <div class="formula-box">
+                <div class="formula-title">容量电价折算比例计算公式</div>
+                <div class="formula">
+                    折算比例 = 满功率连续放电时长 ÷ 全年最长净负荷高峰持续时长
+                </div>
+                <div style="margin-top: 20px; font-size: 18px; opacity: 0.9;">
+                    （最高不超过1，即不超过当地煤电容量电价标准）
+                </div>
+            </div>
+            
+            <div class="card-grid" style="margin-top: 40px;">
+                <div class="info-card">
+                    <div class="card-title">
+                        <div class="card-icon">📋</div>
+                        准入条件
+                    </div>
+                    <div class="card-content">
+                        • 服务于电力系统安全运行<br>
+                        • <span class="highlight">未参与配储</span>（即非新能源配套储能）<br>
+                        • 纳入省级清单管理
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-title">
+                        <div class="card-icon">💰</div>
+                        收益结构
+                    </div>
+                    <div class="card-content">
+                        • <strong>容量电价</strong>：保底收益（按折算比例）<br>
+                        • <strong>市场收益</strong>：参与电能量+辅助服务市场<br>
+                        • 分享比例由省级价格主管部门确定
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-title">
+                        <div class="card-icon">⚙️</div>
+                        管理要求
+                    </div>
+                    <div class="card-content">
+                        • 实行<span class="highlight-blue">清单制管理</span><br>
+                        • 国家能源局明确管理要求<br>
+                        • 省级能源主管部门会同价格主管部门制定项目清单
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第5页：可靠容量补偿 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">04 / 未来主战场</div>
+            <h2>发电侧可靠容量补偿机制</h2>
+        </div>
+        <div class="content-body">
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-circle">1</div>
+                    <div class="step-title">适用时机</div>
+                    <div class="step-desc">电力现货市场<br>连续运行后建立</div>
+                    <div class="arrow">→</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-circle">2</div>
+                    <div class="step-title">补偿对象</div>
+                    <div class="step-desc">机组可靠容量<br>（顶峰时段持续稳定供电能力）</div>
+                    <div class="arrow">→</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-circle">3</div>
+                    <div class="step-title">补偿标准</div>
+                    <div class="step-desc">弥补边际机组在电能量+<br>辅助服务市场不能回收的固定成本</div>
+                    <div class="arrow">→</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-circle">4</div>
+                    <div class="step-title">覆盖范围</div>
+                    <div class="step-desc">煤电、气电、符合条件的<br>电网侧独立新型储能等</div>
+                </div>
+            </div>
+            
+            <div class="alert-box">
+                <div class="alert-title">⚠️ 关键规则</div>
+                <div class="alert-content">
+                    • <strong>不重复补偿</strong>：获得其他保障的容量不再补偿<br>
+                    • <strong>政府定价机组不予补偿</strong>：仅针对市场化机组<br>
+                    • <strong>衔接机制</strong>：建立后，相关机组不再执行原有容量电价，鼓励抽水蓄能自主选择执行可靠容量补偿机制
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第6页：抽水蓄能转型 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">05 / 抽水蓄能</div>
+            <h2>抽水蓄能差异化政策：存量 vs 新建</h2>
+        </div>
+        <div class="content-body">
+            <div class="compare-container">
+                <div class="compare-card old">
+                    <div class="compare-label">BEFORE 2021</div>
+                    <div class="compare-title">633号文前开工项目</div>
+                    <ul class="feature-list" style="font-size: 16px;">
+                        <li style="padding: 15px 0; padding-left: 40px; font-size: 16px;">继续实行政府定价</li>
+                        <li style="padding: 15px 0; padding-left: 40px; font-size: 16px;">省级价格主管部门核定或校核</li>
+                        <li style="padding: 15px 0; padding-left: 40px; font-size: 16px;">经营期满后重新核价</li>
+                        <li style="padding: 15px 0; padding-left: 40px; font-size: 16px;">原则：弥补必要技术改造支出和运行维护成本</li>
+                    </ul>
+                </div>
+                <div class="compare-card new">
+                    <div class="compare-label">AFTER 2021</div>
+                    <div class="compare-title">633号文后开工项目</div>
+                    <ul class="feature-list" style="font-size: 16px;">
+                        <li style="padding: 15px 0; padding-left: 40px; font-size: 16px;"><span class="highlight">每3-5年核定一次</span>容量电价</li>
+                        <li style="padding: 15px 0; padding-left: 40px; font-size: 16px;">原则：经营期内弥补平均成本</li>
+                        <li style="padding: 15px 0; padding-left: 40px; font-size: 16px;"><span class="highlight-blue">必须自主参与市场</span>（电能量+辅助服务）</li>
+                        <li style="padding: 15px 0; padding-left: 40px; font-size: 16px;">市场收益按比例分享，其余冲减系统运行费用</li>
+                        <li style="padding: 15px 0; padding-left: 40px; font-size: 16px;">可选择执行可靠容量补偿机制（市场收益全归电站）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第7页：收益模式对比 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">06 / 商业模式</div>
+            <h2>储能业务三层收益模式</h2>
+        </div>
+        <div class="content-body">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-period">第一层：保底收益</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>容量电价机制</strong><br>
+                        • 按折算比例确定<br>
+                        • 回收固定成本<br>
+                        • 政策保障性强
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-period">第二层：增量收益</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>市场化收益</strong><br>
+                        • 电能量市场套利<br>
+                        • 辅助服务市场<br>
+                        • 按比例分享
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-period">第三层：升级收益</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>可靠容量补偿</strong><br>
+                        • 现货市场运行后<br>
+                        • 按顶峰能力补偿<br>
+                        • 市场收益全归电站
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-box warning">
+                <div class="alert-title">💡 策略建议</div>
+                <div class="alert-content">
+                    当前阶段重点争取进入<strong>省级储能清单</strong>，获取容量电价"保底收益"；同时建设<strong>市场化运营能力</strong>，为现货市场运行后的"可靠容量补偿"机制做好准备，实现从"政策依赖"向"市场驱动"的转型。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第8页：市场准入 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">07 / 准入门槛</div>
+            <h2>清单制管理与区域布局策略</h2>
+        </div>
+        <div class="content-body">
+            <div class="card-grid">
+                <div class="info-card" style="border-left-color: #e53e3e;">
+                    <div class="card-title">
+                        <div class="card-icon" style="background: #e53e3e;">🚫</div>
+                        负面清单
+                    </div>
+                    <div class="card-content">
+                        • 已参与新能源配储的储能项目<br>
+                        • 非独立储能（如用户侧配套）<br>
+                        • 未服务于电力系统安全运行的项目<br>
+                        • <span class="highlight">未纳入省级清单的项目</span>
+                    </div>
+                </div>
+                <div class="info-card" style="border-left-color: #48bb78;">
+                    <div class="card-title">
+                        <div class="card-icon" style="background: #48bb78;">✓</div>
+                        准入条件
+                    </div>
+                    <div class="card-content">
+                        • 电网侧独立新型储能<br>
+                        • 满功率连续放电时长≥要求<br>
+                        • 具备顶峰能力<br>
+                        • 接受统一调度管理
+                    </div>
+                </div>
+                <div class="info-card" style="border-left-color: #3182ce;">
+                    <div class="card-title">
+                        <div class="card-icon" style="background: #3182ce;">🗺️</div>
+                        优先布局区域
+                    </div>
+                    <div class="card-content">
+                        • <span class="highlight-blue">新能源装机占比高</span>的地区<br>
+                        • 电力现货市场连续运行的省份<br>
+                        • 用户承受能力较强的区域<br>
+                        • 可靠容量需求大的地区
+                    </div>
+                </div>
+                <div class="info-card" style="border-left-color: #ed8936;">
+                    <div class="card-title">
+                        <div class="card-icon" style="background: #ed8936;">⏰</div>
+                        时间节点
+                    </div>
+                    <div class="card-content">
+                        • 立即：梳理项目，准备清单申报材料<br>
+                        • 短期：关注各省现货市场建设进度<br>
+                        • 中期：可靠容量补偿机制建立后全面参与
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第9页：结算与考核 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">08 / 运营要点</div>
+            <h2>结算政策与考核机制</h2>
+        </div>
+        <div class="content-body">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%">项目</th>
+                        <th style="width: 35%">现货市场连续运行地区</th>
+                        <th style="width: 40%">现货市场未连续运行地区</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>充电/抽水价格</strong></td>
+                        <td>按<span class="highlight">市场规则或现货实时价格</span>执行</td>
+                        <td>执行电网代理工商业用户购电价格</td>
+                    </tr>
+                    <tr>
+                        <td><strong>放电/发电价格</strong></td>
+                        <td>按<span class="highlight">市场规则或现货实时价格</span>执行</td>
+                        <td>由省级价格主管部门统筹确定（考虑充放损耗）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>费用缴纳</strong></td>
+                        <td colspan="2" style="text-align: center;">
+                            充电/抽水时视作用户，缴纳上网环节线损费用和系统运行费用<br>
+                            暂按<span class="highlight-blue">单一电量制</span>执行输配电价
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>费用退减</strong></td>
+                        <td colspan="2" style="text-align: center;">
+                            放电/发电电量相应<span class="highlight">退减输配电费</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="alert-box">
+                <div class="alert-title">⚠️ 考核要求（关键！）</div>
+                <div class="alert-content">
+                    • 完善容量电费考核办法，<span class="highlight">分类进行考核</span>，引导机组提升生产运行水平<br>
+                    • 可靠容量补偿机制建立后，<span class="highlight">进一步从严加强考核</span><br>
+                    • 对未能达到考核要求的机组，<span class="highlight">扣减容量电费或可靠容量补偿费用</span><br>
+                    • <strong>核心指标</strong>：顶峰出力能力、持续稳定供电能力
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第10页：配套政策 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">09 / 配套机制</div>
+            <h2>中长期市场与区域分摊机制</h2>
+        </div>
+        <div class="content-body">
+            <div class="card-grid">
+                <div class="info-card">
+                    <div class="card-title">
+                        <div class="card-icon">📈</div>
+                        中长期市场优化
+                    </div>
+                    <div class="card-content">
+                        • 可适当调整煤电中长期市场交易<span class="highlight">价格下限</span><br>
+                        • 适当放宽煤电中长期合同<span class="highlight">签约比例</span>要求<br>
+                        • <span class="highlight-blue">鼓励签订灵活价格机制</span>（随市场供需、发电成本变化）<br>
+                        • 可要求年度中长期合同约定一定比例电量实行<span class="highlight">反映实时供需的灵活价格</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-title">
+                        <div class="card-icon">🌐</div>
+                        区域分摊机制
+                    </div>
+                    <div class="card-content">
+                        • 区域共用抽水蓄能容量电费按<span class="highlight">容量分配比例</span>分摊<br>
+                        • 鼓励通过<span class="highlight-blue">市场化方式</span>优化分摊<br>
+                        • 已核准但未明确比例的项目：由所在地省级部门组织协商<br>
+                        • 新建项目：在核准文件中明确分摊比例
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-box warning" style="margin-top: 40px;">
+                <div class="alert-title">🛡️ 承受能力评估制度（项目核准前置条件）</div>
+                <div class="alert-content">
+                    • 省级价格主管部门会同能源主管部门建立<span class="highlight">用户经济承受能力评估制度</span><br>
+                    • 评估结果作为：确定可靠容量补偿标准、制定调节能力及新能源发展规划、<span class="highlight">核准抽水蓄能等项目</span>的重要依据<br>
+                    • <strong>红线</strong>：未开展承受能力评估的项目，不得纳入规划及核准，不得给予容量电费或可靠容量补偿
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第11页：行动路线图 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">10 / 行动计划</div>
+            <h2>储能业务开展行动路线图</h2>
+        </div>
+        <div class="content-body">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-period">立即行动<br>（0-3个月）</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>清单申报冲刺</strong><br>
+                        • 梳理现有/规划项目<br>
+                        • 准备省级清单申报材料<br>
+                        • 确保"未参与配储"属性<br>
+                        • 对接省级能源/价格主管部门
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-period">短期布局<br>（3-12个月）</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>能力建设与优化</strong><br>
+                        • 建立电能量/辅助服务市场参与能力<br>
+                        • 优化储能时长（建议≥4小时）<br>
+                        • 签订电网调度运行协议<br>
+                        • 重点布局现货成熟省份
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-period">中期战略<br>（1-3年）</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>市场化转型</strong><br>
+                        • 打造"保底+增量+升级"三层收益<br>
+                        • 提升顶峰能力和可靠性<br>
+                        • 做好向可靠容量补偿过渡准备<br>
+                        • 探索抽水蓄能协同发展
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第12页：风险提示 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">11 / 风险管控</div>
+            <h2>关键风险提示与应对策略</h2>
+        </div>
+        <div class="content-body">
+            <div class="card-grid">
+                <div class="info-card" style="border-left-color: #e53e3e;">
+                    <div class="card-title">
+                        <div class="card-icon" style="background: #e53e3e;">⚠️</div>
+                        政策风险
+                    </div>
+                    <div class="card-content">
+                        <strong>承受能力评估门槛</strong><br>
+                        用户承受能力弱地区将从严控制新增项目<br>
+                        <span class="highlight">应对：</span>优先选择承受能力强的区域，提前开展评估工作
+                    </div>
+                </div>
+                <div class="info-card" style="border-left-color: #ed8936;">
+                    <div class="card-title">
+                        <div class="card-icon" style="background: #ed8936;">📉</div>
+                        市场风险
+                    </div>
+                    <div class="card-content">
+                        <strong>市场收益不确定性</strong><br>
+                        市场收益按比例分享，且需参与竞争<br>
+                        <span class="highlight-blue">应对：</span>建设专业交易团队，开发智能交易策略
+                    </div>
+                </div>
+                <div class="info-card" style="border-left-color: #3182ce;">
+                    <div class="card-title">
+                        <div class="card-icon" style="background: #3182ce;">🔧</div>
+                        运营风险
+                    </div>
+                    <div class="card-content">
+                        <strong>严格考核要求</strong><br>
+                        未达考核要求将扣减容量电费<br>
+                        <span class="highlight-blue">应对：</span>提升设备可靠性，建立顶峰能力保障机制
+                    </div>
+                </div>
+                <div class="info-card" style="border-left-color: #805ad5;">
+                    <div class="card-title">
+                        <div class="card-icon" style="background: #805ad5;">⏱️</div>
+                        时机风险
+                    </div>
+                    <div class="card-content">
+                        <strong>现货市场推进节奏</strong><br>
+                        可靠容量补偿机制依赖现货市场运行<br>
+                        <span class="highlight">应对：</span>密切跟踪各省现货市场建设进度，动态调整布局
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第13页：结论 -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <div class="slide-number">12 / 战略结论</div>
+            <h2>核心结论与决策建议</h2>
+        </div>
+        <div class="content-body">
+            <ul class="feature-list" style="font-size: 22px;">
+                <li style="padding: 25px 0; padding-left: 60px;">
+                    <strong style="color: #2d3748;">政策窗口期已开启</strong><br>
+                    <span style="font-size: 18px; color: #718096;">新型储能首次纳入容量电价机制，获得独立市场主体地位，必须抓住清单申报窗口期</span>
+                </li>
+                <li style="padding: 25px 0; padding-left: 60px;">
+                    <strong style="color: #2d3748;">收益模式根本转变</strong><br>
+                    <span style="font-size: 18px; color: #718096;">从"单一租赁费"向"容量电价保底+市场收益增量+可靠容量补偿升级"转型</span>
+                </li>
+                <li style="padding: 25px 0; padding-left: 60px;">
+                    <strong style="color: #2d3748;">区域选择至关重要</strong><br>
+                    <span style="font-size: 18px; color: #718096;">优先布局现货市场成熟、新能源占比高、用户承受能力强的省份</span>
+                </li>
+                <li style="padding: 25px 0; padding-left: 60px;">
+                    <strong style="color: #2d3748;">能力建设是核心</strong><br>
+                    <span style="font-size: 18px; color: #718096;">必须建立市场化交易能力和顶峰保障能力，应对严格考核要求</span>
+                </li>
+            </ul>
+            
+            <div class="formula-box" style="margin-top: 40px;">
+                <div class="formula-title">战略公式</div>
+                <div style="font-size: 28px; font-weight: 700;">
+                    储能业务成功 = 清单准入（政策）+ 时长优化（技术）+ 市场能力（运营）+ 区域布局（战略）
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第14页：结束 -->
+    <div class="slide end-slide">
+        <h2>把握政策机遇 引领储能发展</h2>
+        <div style="font-size: 24px; color: #b8b8d1; margin-bottom: 60px;">
+            从"政策驱动"到"市场驱动"的转型之路
+        </div>
+        <div class="badge" style="margin-bottom: 40px;">Q & A</div>
+        <div class="contact-info">
+            发改价格〔2026〕114号 | 2026年1月27日
+        </div>
+    </div>
+
+    <div class="nav-hint">
+        按方向键或点击翻页 | 共14页
+    </div>
+
+    <script>
+        // 简单的键盘导航
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function goToSlide(n) {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].style.display = 'flex';
+            slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+                goToSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                goToSlide(currentSlide - 1);
+            }
+        });
+        
+        // 点击翻页
+        document.addEventListener('click', () => {
+            goToSlide(currentSlide + 1);
+        });
+        
+        // 初始化显示第一页
+        slides.forEach((slide, index) => {
+            if (index !== 0) slide.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
